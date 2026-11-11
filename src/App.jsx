@@ -1,30 +1,30 @@
-import { useState } from 'react';
-import { tutors } from './data/tutors';
-import { getVisibleTutors } from './utils/catalog';
-import { useReferenceData } from './hooks/useReferenceData';
-import { useLocalStorage } from './hooks/useLocalStorage';
-import Header from './components/Header';
-import SearchBar from './components/SearchBar';
-import Filters from './components/Filters';
-import TutorList from './components/TutorList';
-import TutorDetails from './components/TutorDetails';
-import EmptyState from './components/EmptyState';
-import Toast from './components/Toast';
+import { useState } from "react";
+import { tutors } from "./data/tutors";
+import { getVisibleTutors } from "./utils/catalog";
+import { useReferenceData } from "./hooks/useReferenceData";
+import { useLocalStorage } from "./hooks/useLocalStorage";
+import Header from "./components/Header";
+import SearchBar from "./components/SearchBar";
+import Filters from "./components/Filters";
+import TutorList from "./components/TutorList";
+import TutorDetails from "./components/TutorDetails";
+import EmptyState from "./components/EmptyState";
+import Toast from "./components/Toast";
 
 export const DEFAULT_FILTERS = {
   subjects: [],
-  city: '',
-  format: 'all',
+  city: "",
+  format: "all",
   maxPrice: 1200,
   verifiedOnly: false,
 };
 
 export default function App() {
-  const [query, setQuery] = useState('');
+  const [query, setQuery] = useState("");
   const [filters, setFilters] = useState(DEFAULT_FILTERS);
-  const [sortBy, setSortBy] = useState('recommended');
+  const [sortBy, setSortBy] = useState("recommended");
   const [selectedId, setSelectedId] = useState(null);
-  const [favorites, setFavorites] = useLocalStorage('tutor-favorites', []);
+  const [favorites, setFavorites] = useLocalStorage("tutor-favorites", []);
   const [toast, setToast] = useState(null);
   const reference = useReferenceData();
 
@@ -32,11 +32,15 @@ export default function App() {
   const selected = tutors.find((t) => t.id === selectedId);
 
   const toggleFavorite = (id) => {
-    setFavorites((prev) => (prev.includes(id) ? prev.filter((x) => x !== id) : [...prev, id]));
+    setFavorites((prev) =>
+      prev.includes(id) ? prev.filter((x) => x !== id) : [...prev, id],
+    );
   };
 
   const book = (tutor) => {
-    setToast(`Заявку для ${tutor.name} надіслано. Репетитор зв'яжеться з вами найближчим часом.`);
+    setToast(
+      `Заявку для ${tutor.name} надіслано. Репетитор зв'яжеться з вами найближчим часом.`,
+    );
     setSelectedId(null);
   };
 
