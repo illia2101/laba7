@@ -1,6 +1,6 @@
-import { useRef } from 'react';
-import TutorCard from './TutorCard';
-import { useBioClamp } from '../hooks/useBioClamp';
+import { useRef } from "react";
+import TutorCard from "./TutorCard";
+import { useBioClamp } from "../hooks/useBioClamp";
 
 export default function TutorList({
   tutors,
@@ -15,7 +15,7 @@ export default function TutorList({
 
   return (
     <div className="tutor-grid" ref={containerRef} style={style}>
-      {tutors.map((tutor) => (
+      {tutors.slice(0, 30).map((tutor) => (
         <TutorCard
           key={tutor.id}
           tutor={tutor}

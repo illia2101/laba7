@@ -1,5 +1,6 @@
 import RatingStars from "./RatingStars";
 import { averageRating } from "../utils/rating";
+
 import { formatPrice, pluralize, FORMAT_LABELS } from "../utils/format";
 
 export default function TutorCard({
